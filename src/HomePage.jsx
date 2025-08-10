@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import linkedinIcon from './assets/in.png'
 import githubIcon from './assets/gh.png'
 import mobileIcon from './assets/mobile.png'
+import emailIcon from './assets/email.png'
 import locationIcon from './assets/loc.png'
 import profileImage from './assets/profile.jpg'
 
@@ -61,6 +62,9 @@ export default function HomePage() {
           </li>
           <li onClick={()=> window.open("tel:+447415376543")} style={{cursor:'pointer'}}>
             <img src={mobileIcon} alt="Phone" /> +44 7415 376543
+          </li>
+          <li onClick={()=> window.open("mailto:pamolchanov@proton.me")} style={{cursor:'pointer'}}>
+            <img src={emailIcon} alt="Email" /> pamolchanov@proton.me
           </li>
           <li onClick={()=> window.open("https://maps.google.co.uk/?q=%2C+London%2C+%2C+uk")} style={{cursor:'pointer'}}> 
             <img src={locationIcon} alt="Location" /> London, UK
