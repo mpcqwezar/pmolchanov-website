@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 import linkedinIcon from './assets/in.png'
 import githubIcon from './assets/gh.png'
 import mobileIcon from './assets/mobile.png'
@@ -5,6 +7,8 @@ import locationIcon from './assets/loc.png'
 import profileImage from './assets/profile.jpg'
 
 export default function HomePage() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -17,15 +21,35 @@ export default function HomePage() {
     <div className="container">
       <header className="main-header">
         <nav className="nav-bar">
-          <div className="nav-title" onClick={scrollToTop}>Pavel Molchanov</div>
-          <div className="nav-buttons">
+          <div className="nav-title" onClick={() => {scrollToTop(); setMenuOpen(false);}}>Pavel Molchanov</div>
+          
+          <div className="nav-buttons desktop-only">
             <button onClick={() => scrollToSection("about")}>About</button>
             <button onClick={() => scrollToSection("work")}>Work</button>
             <button onClick={() => scrollToSection("skills")}>Skills</button>
             <button onClick={() => scrollToSection("learning")}>Learning</button>
           </div>
+          
+          <div 
+            className="mobile-only burger" 
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle navigation menu"
+            role="button"
+            tabIndex={0}
+          >
+            ☰
+          </div>
         </nav>
       </header>
+
+      {menuOpen && (
+        <div className="mobile-menu">
+          <button onClick={() => {scrollToSection("about"); setMenuOpen(false);}}>About Me</button>
+          <button onClick={() => {scrollToSection("work"); setMenuOpen(false);}}>Work Experience</button>
+          <button onClick={() => {scrollToSection("skills"); setMenuOpen(false);}}>Skills</button>
+          <button onClick={() => {scrollToSection("learning"); setMenuOpen(false);}}>Learning Path</button>
+        </div>
+      )}
 
       <section className="contact-links">
         <ul>
